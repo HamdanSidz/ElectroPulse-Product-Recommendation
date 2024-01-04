@@ -1,0 +1,67 @@
+{% extends "recommend/base.html" %}
+{% load static %}
+
+{% block title %}|Recommend{% endblock title %}
+
+{% block content %}
+    <br>
+    <br>
+
+    <div class= "container mt-8">
+        <div class="row">
+            
+                {% if message %}
+                <div class="col-sm-8 offset-2">
+                    <div class="alert alert-info mt-3">
+                        <small><h6>{{message}}</h6></small>
+                    </div>
+                </div>
+                {% elif product_list %}
+                <div class="col-sm-8 offset-2">
+                    <h3>Your Recommended Items</h3>
+                    <br>
+                    <div class="container mt-3">
+                        <div class="row">
+                            {% for product in product_list %}
+                                <div class="col-md-4">
+                                    <div class="card h-100" style="width: 12rem;"> 
+                                        <img class="card-img-top" src="{{ product.image }}" >
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ product.name }}</h5>
+                                            <p class="card-text">Ratings: {{ product.ratings }}</p>
+                                            <p class="card-text">No. of Ratings: {{ product.no_of_ratings }}</p>
+                                            <a href="{{ product.link }}" class="btn btn-info" style="width: 6rem;" >Visit Web</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                                    </div><div class="row mt-3">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                
+                    <h3>Advanced Electronics Recommendations</h3>
+                    <p>Selects, what are you looking for:</p>
+                    <br>
+                    <form action="" method="POST" novalidate >
+                        {% csrf_token %}
+                        <select class="form-select" name="mySelect">
+                            <option selected>Open this select menu to choose</option>
+                            {% for key,value in data_list.items %}
+                                <option style="font-size: 15px">{{value}}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Recommend" class="btn btn-outline-success btn-sm mt-3">
+                    </form>
+                
+
+                {% endif %}
+            
+        </div>
+    </div>
+
+
+{% endblock content %}

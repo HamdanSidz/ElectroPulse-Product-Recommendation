@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'recommend/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'recommend/css/custom.css' %}"> 
+
+    <title>ElectroPulse{% block title %}{% endblock title %}</title>
+</head>
+<body>
+   
+    {% include "recommend/navbar.html" %}
+
+    {% block content %}
+                    
+    {% endblock content %}
+
+</body>
+
+    <script src="{% static 'recommend/js/jquery.js' %}"></script>
+    <script src="{% static 'recommend/js/popper.js' %}"></script>
+    <script src="{% static 'recommend/js/bootstrap.js' %}"></script>
+</html>

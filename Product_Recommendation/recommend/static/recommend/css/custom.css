@@ -1,0 +1,18 @@
+/* Custom styles */
+
+body {
+background-color:whitesmoke; /* Light Lavender */
+}
+
+nav {
+ background-color:#4CAF50 ;
+}
+
+.navbar .navbar-nav .nav-link {
+color:darkblue; /* Change navbar links color */
+}
+
+.navbar .navbar-nav .nav-link:hover {
+color:gainsboro; /* Hover color for navbar links */
+}
+  
